@@ -1,0 +1,24 @@
+name: duf-utility
+base: core20
+adopt-info: duf
+summary: duf
+description: |
+  Disk Usage/Free Utility (Linux, BSD, macOS & Windows)
+
+grade: stable
+confinement: strict
+
+parts:
+  duf:
+    plugin: go
+    source: https://github.com/muesli/duf.git
+    #source-tag: "v0.6.0"
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags)"
+
+apps:
+  duf:
+    command: bin/duf
+    plugs:
+      - mount-observe
