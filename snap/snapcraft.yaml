@@ -15,7 +15,7 @@ parts:
     #source-tag: "v0.6.0"
     override-pull: |
       snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags)"
+      snapcraftctl set-version "$(git describe --tags | tr -d 'v')"
 
 apps:
   duf:
